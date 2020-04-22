@@ -1,0 +1,70 @@
+Tests of Freepastry and Openchord
+
+  The tests are included inside the peerunit.jar package. To execute them you need to start the centralized testing Coordinator before each test, like this:
+
++-----
+$ java fr.inria.peerunit.rmi.coord.CoordinatorImpl & 
++-----
+
+  or the distributed testing coordination, like this:
+
++----
+$ java fr.inria.peerunit.btree.BootstrapperImpl & 
++----
+
+  Before execute a test you need to start the P2P bootstrapper:
+
+    * FreePastry
+
++-----
+$ java freepastry.Bootstrap &   
++-----
+
+    * OpenChord
+
++-----
+$ java openchord.Bootstrap &   
++-----
+
+* Testing the updating of the routing table
+
+** Recovery from Peer Isolation
+
+  $ java fr.inria.peerunit.TestRunner {{{./java/freepastry/TestPeerIsolation.java}freepastry.test.TestPeerIsolation}}
+
+  $ java fr.inria.peerunit.TestRunner {{{./java/openchord/TestPeerIsolation.java}openchord.test.TestPeerIsolation}}
+
+** Expanding System
+
+  $ java fr.inria.peerunit.TestRunner {{{./java/freepastry/TestNewJoin.java}freepastry.test.TestNewJoin}}
+
+  $ java fr.inria.peerunit.TestRunner {{{./java/openchord/TestNewJoin.java}openchord.test.TestNewJoin}}
+
+** Shrinking System
+
+  $ java fr.inria.peerunit.TestRunner {{{./java/freepastry/TestUpdateOnShrink.java}freepastry.test.TestUpdateOnShrink}}
+
+  $ java fr.inria.peerunit.TestRunner {{{./java/openchord/TestUpdateOnShrink.java}openchord.test.TestUpdateOnShrink}}
+
+* Testing the insert and retrieve operations
+
+** Insert/Retrieve in a Stable System
+
+  $ java fr.inria.peerunit.TestRunner {{{./java/freepastry/TestInsertStable.java}freepastry.test.TestInsertStable}}
+
+** Insert/Retrieve in an Expanding System
+
+  $ java fr.inria.peerunit.TestRunner {{{./java/freepastry/TestInsertJoin.java}freepastry.test.TestInsertJoin}}
+
+  $ java fr.inria.peerunit.TestRunner {{{./java/openchord/TestInsertJoin.java}openchord.test.TestInsertJoin}}
+
+** Insert/Retrieve in a Shrinking System
+
+  $ java fr.inria.peerunit.TestRunner {{{./java/freepastry/TestInsertLeave.java}freepastry.test.TestInsertLeave}}
+
+  $ java fr.inria.peerunit.TestRunner {{{./java/openchord/TestInsertLeave.java}openchord.test.TestInsertLeave}}
+
+* Coordination Overhead Evaluation Test
+
+  $ java fr.inria.peerunit.TestRunner {{{./java/openchord/SimpleTest.java}SimpleTest}}
+

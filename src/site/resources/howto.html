@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>PeerUnit - </title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+          </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="http://www.lina.univ-nantes.fr/" id="bannerLeft">
+    
+                                            <img src="images/logo-lina+texte-283x77.jpg" alt="" />
+    
+            </a>
+                        <a href="http://www.univ-nantes.fr/" id="bannerRight">
+    
+                                            <img src="images/logouniv2.png" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+    
+            <div class="xleft">
+        Last Published: 2009-04-23
+                      </div>
+            <div class="xright">      
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+    
+                   <h5>Contents</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="index.html">Introduction</a>
+          </li>
+              
+    <li class="none">
+                    <a href="architecture.html">Architecture</a>
+          </li>
+              
+    <li class="none">
+                    <a href="install.html">Install</a>
+          </li>
+              
+    <li class="none">
+              <strong>Usage</strong>
+        </li>
+              
+    <li class="none">
+                    <a href="example.html">Example</a>
+          </li>
+              
+    <li class="none">
+                    <a href="download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="publications.html">Publications</a>
+          </li>
+          </ul>
+              <h5>Examples</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="tests.html">FreePastry</a>
+          </li>
+              
+    <li class="none">
+                    <a href="tests.html">OpenChord</a>
+          </li>
+          </ul>
+                                           <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy">
+            <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>How to write a test</h2>
+<hr />
+<p>This tutorial presents a generic way to write a test.</p>
+<hr />
+<div class="section"><h3>Let's go to the main lines of code.</h3>
+<p>Initially the class TestCaseImpl must be inherited. Such class provides the tags and methods that will be used throughout the test. </p>
+<div class="source"><pre>public class Example extends TestCaseImpl{    </pre>
+</div>
+<p>To execute the test in the correct sequence, the methods should use some tags:</p>
+<ul><li>@BeforeClass <p>This tag is the first one executed by peerunit and can be used to start something in the test, for instance a DHT. The parameters are: * place (where it will execute) * timeout </p>
+</li>
+<li>@AfterClass<p>This tag is the last one executed by peerunit and can be used to start something in the test, for instance a DHT. The parameters are the same of the @BeforeClass.</p>
+<div class="source"><pre>    @BeforeClass(place=-1,timeout=100)
+    public void start(){        
+        // Pseudocode to instantiate a peer  
+        Peer peer=new Peer();
+    }
+
+   ...
+    
+    @AfterClass(place=-1,timeout=100)
+    public void stop(){
+        peer.leave();
+    }
+}</pre>
+</div>
+</li>
+<li>@Test<p>This tag performs the actions of the test. For instance, put some data. The parameters are:</p>
+<ul><li>place (if you specify a particular peer, or &quot;-1&quot; to be executed in all peers)</li>
+<li>from (if you specify a range of peers)</li>
+<li>to (if you specify a range of peers)</li>
+<li>timeout</li>
+<li>name (the name of the action is used to sort the sequence fo the actions)</li>
+<li>step (is used to sort the actions with the same name)</li>
+</ul>
+<div class="source"><pre>...
+
+    @Test(place=-1,timeout=100, name = &quot;action1&quot;, step = 0)
+    public void join(){        
+        // Let's join the system
+        peer.join();
+    }
+    
+    @Test(place=0,timeout=100, name = &quot;action2&quot;, step = 0)
+    public void put(){        
+        // Put data
+        peer.put(expectedKey,expected);
+    }     
+    
+    @Test(from=1,to=3,timeout=100, name = &quot;action3&quot;, step = 0)
+    public void retrieve(){
+        // Retrieving the inserted data
+        actual=peer.get(expectedKey);        
+    }
+    
+    @Test(from=1,to=3,timeout=100, name = &quot;action4&quot;, step = 0)
+    public void assertRetrieve(){
+        // Let's see if we got the expected data
+        assertEquals(expected, actual);
+    }
+    
+...</pre>
+</div>
+<hr />
+</li>
+</ul>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2009
+    
+          
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

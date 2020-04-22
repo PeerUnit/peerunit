@@ -1,0 +1,32 @@
+Install
+
+*Requirements
+
+  We compile and run Peerunit on FreeBSD, OSX and Linux with Java JDK 1.5.
+
+  In addition, it is necessary to use some external packages, such as ant, and the jsh package and our deployment package from our download page.
+
+*Downloading the jar file
+
+  You can get peerunit in two ways.
+
+   [[1]]. - Get the jar package like this:
+
++-----
+$ wget  -P  /<your_path> http://peerunit.gforge.inria.fr/dist/peerunit.jar
+$ export  CLASSPATH=$CLASSPATH:/<your_path>/peerunit.jar:.
++-----
+
+   [[2]]. - Compile the source code using our ant file(build.xml). The ant file will create the file peerunit.jar.
+
+$ ant  build
+
+      The peerunit.jar will be generated in the "dist/" folder.
+
+*Testing the installation
+
+  Now try to execute a simple test described here.
+
+*Disclaimer
+
+  This is an alpha version of Peerunit. We would value your feedback with suggestions and improvements.

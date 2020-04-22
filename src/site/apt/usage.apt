@@ -1,0 +1,128 @@
+Writing a Test Case
+
+	In PeerUnit, a test case is a class and test steps are methods of this class. 
+	
+	The test case class may specialize any other class:
+	
++---------------
+	public class MyTestCase {
+		// ...
+	} 
++---------------
+	
+    Or:
+
++---------------
+	public class MyTestCase extends MyAbstractTestCase {
+		// ...
+	} 
++---------------
+	
+*Method annotations
+
+	There are three main annotations that can be used inside a test case. These annotations ensure that test steps are executed in the correct sequence:
+
+*----------------+-----------------------------------------------+
+| <<Annotation>> | <<Description>>                               |
+*----------------+-----------------------------------------------+
+| @AfterClass    | The method is executed before all test steps. |
+*----------------+-----------------------------------------------+
+| @BeforeClass   | The method is executed after all test steps.  |
+*----------------+-----------------------------------------------+
+| @TestStep      | The method is a test step.                    |
+*----------------+-----------------------------------------------+
+
+** @BeforeClass
+
+  The @BeforeClass annotation has the following attributes:
+
+*--------------*----------------------------------------------------------------------------------+
+| <<Attrbute>> | <<Description>>                                                                  |
+*--------------*----------------------------------------------------------------------------------+
+| range        | String, representing a range of testers where the test step should be executed.  |
+|			   | For instance:  "*" (all testers), "54" or "4-17".                                |
+*--------------*----------------------------------------------------------------------------------+
+| timeout      | Integer, representing the method timeout, in milliseconds.                       |
+|              | If the execution time exceeds this timeout, an inconclusive verdict is assigned. |
+*--------------*----------------------------------------------------------------------------------+
+
+	The following method is the first method that is executed by all testers:
+
++-------------
+@BeforeClass(range = "*", timeout = 100)
+public void start(){        
+	// Pseudocode to instantiate a peer (the system under test).
+	Peer peer = new Peer();
+}
++-------------
+
+** @AfterClass
+
+  The @AfterClass annotation has the following attributes:
+
+*--------------*----------------------------------------------------------------------------------+
+| <<Attrbute>> | <<Description>>                                                                  |
+*--------------*----------------------------------------------------------------------------------+
+| range        | String, representing a range of testers where the test step should be executed.  |
+|			   | For instance:  "*" (all testers), "54" or "4-17".                                |
+*--------------*----------------------------------------------------------------------------------+
+| timeout      | Integer, representing the method timeout, in milliseconds.                       |
+|              | If the execution time exceeds this timeout, an inconclusive verdict is assigned. |
+*--------------*----------------------------------------------------------------------------------+
+
+   The following method is the first method that is executed by all testers:
+
++------------
+@AfterClass(range = "*", timeout = 100)
+public void stop(){
+    peer.leave();
+}
++------------
+
+
+** @TestStep
+
+      The @AfterClass annotation has the following attributes:
+
+*--------------*----------------------------------------------------------------------------------+
+| <<Attrbute>> | <<Description>>                                                                  |
+*--------------*----------------------------------------------------------------------------------+
+| name         | String, the name of the test step        		     				              |
+*--------------*----------------------------------------------------------------------------------+
+| order        | Integer, used to order test steps.                                               |
+*--------------*----------------------------------------------------------------------------------+
+| range        | String, representing a range of testers where the test step should be executed.  |
+|			   | For instance:  "*" (all testers), "54" or "4-17".                                |
+*--------------*----------------------------------------------------------------------------------+
+| timeout      | Integer, representing the method timeout, in milliseconds.                       |
+|              | If the execution time exceeds this timeout, an inconclusive verdict is assigned. |
+*--------------*----------------------------------------------------------------------------------+
+
+
+	The following methods are examples of test steps:
+
++---------------
+@Test(range = "*", timeout = 100, order = 1)
+public void join(){        
+    // Makes the peer join the system
+    peer.join();
+}
+
+@Test(range = 0, timeout = 100, order = 2)
+public void put(){        
+    // Tester 0 inserts some data
+    peer.put(expectedKey,expected);
+}     
+
+@Test(range = "1-3", timeout = 100, order = 3)
+public void retrieve(){
+    // Testers 1 to 3 retrieves the inserted data
+    actual = peer.get(expectedKey);        
+}
+
+@Test(range = "1-3", timeout = 100, order = 4)
+public void assertRetrieve(){
+    // Testers 1 to 3 compare the retrieved data with the expected one
+	assert expected.equals(actual);
+}
++------------------

@@ -1,0 +1,39 @@
+Publications
+
+	Eduardo Cunha de Almeida, João Eugenio Marynowski, Gerson Sunyé, Patrick Valduriez.
+	PeerUnit: a framework for testing peer-to-peer systems. 
+	25th IEEE/ACM International Conference on Automated Software Engineering, ASE 2010,
+	Antwerp, Belgium, September 20-24, 2010.
+	[{{{http://dblp.uni-trier.de/rec/bibtex/conf/kbse/AlmeidaMSV10}bibtex}}]
+
+	Eduardo Cunha de Almeida, João Eugenio Marynowski, Gerson Sunyé, Yves Le Traon, Patrick Valduriez.
+	Efficient Distributed Test Architectures for Large-Scale Systems.
+	22nd IFIP WG 6.1 International Conference, ICTSS 2010, 
+	Natal, Brazil, November 8-10, 2010.
+	[{{{http://dblp.uni-trier.de/rec/bibtex/conf/pts/AlmeidaMSTV10}bibtex}}]	
+
+	Eduardo Cunha de Almeida, Gerson Sunyé, Yves Le Traon, Patrick Valduriez.
+	Testing peer-to-peer systems. 
+	Empirical Software Engineering 15(4): 346-379 (2010).
+	[{{{http://dblp.uni-trier.de/rec/bibtex/journals/ese/AlmeidaSTV10}bibtex}}]
+
+
+  Eduardo Cunha de Almeida, Gerson Sunyé, Yves Le Traon, and Patrick Valduriez. 
+  A Framework for Testing Peer-to-Peer Systems. 
+  In 19th International Symposium on Software Reliability Engineering (ISSRE 2008), 
+  11-14 November 2008, Seattle/Redmond, WA, USA. 
+  [{{{./dist/issre2008.pdf}pdf}}] [{{{http://dblp.uni-trier.de/rec/bibtex/conf/issre/AlmeidaSTV08}bibtex}}]
+
+  Eduardo Cunha de Almeida, Gerson Sunyé, Yves Le Traon, and Patrick Valduriez. 
+  Testing Peers' Volatility. In 23rd IEEE/ACM International Conference on Automated Software Engineering (ASE 2008), 15-19 September 2008, L'Aquila, Italy. 
+  [{{{./dist/ase2008.pdf}pdf}}] [{{{http://dblp.uni-trier.de/rec/bibtex/conf/kbse/AlmeidaSTV08}bibtex}}] 
+
+  Eduardo Cunha de Almeida, Gerson Sunyé, and Patrick Valduriez. 
+  Testing Architectures for Large Scale Systems. 
+  In 8th International Conference High Performance Computing for Computational Science (VECPAR 2008), 24-27 June 2008, Toulouse, France. 
+  [{{{./dist/hpdgrid.pdf}pdf}}] [{{{http://dblp.uni-trier.de/rec/bibtex/conf/vecpar/AlmeidaSV08}bibtex}}]
+
+  Eduardo Cunha de Almeida, Gerson Sunyé, and Patrick Valduriez. 
+  Action Synchronization in P2P System Testing. 
+  In 2008 International Workshop on Data Management in Peer-to-Peer Systems (DaMap 2008 - EDBT Workshop), 25 March 2008, Nantes, France. 
+  [{{{./dist/damap08.pdf}pdf}}] [{{{http://dblp.uni-trier.de/rec/bibtex/conf/edbt/AlmeidaSV08}bibtex}}]
