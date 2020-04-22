@@ -1,0 +1,4 @@
+= PeerUnit
+
+The Atlas Peer-to-peer testing platform is a platform to develop tests for P2P systems. 
+Main features: test execution control, synchronization, volatility control.
